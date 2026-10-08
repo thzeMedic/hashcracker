@@ -2,8 +2,8 @@ CXX = g++
 CXXFLAGS = -Wall -Wextra
 LDLIBS = -lcrypto
 
-main: main.cpp
-	$(CXX) $(CXXFLAGS) main.cpp -o main $(LDLIBS)
+main: hashcracker.cpp
+	$(CXX) $(CXXFLAGS) ./*.cpp -o hashcracker $(LDLIBS)
 
 clean:
-	rm -f main
+	rm -f hashcracker

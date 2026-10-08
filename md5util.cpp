@@ -1,12 +1,11 @@
 #include <iostream>
 #include <iomanip>
 #include <string>
-#include <fstream>
-#include <sstream>
 #include <openssl/md5.h>
 #include <openssl/evp.h>
 
 using namespace std;
+
 
 // Function to print the MD5 hash in hexadecimal format
 void print_MD5(unsigned char *md, long size = MD5_DIGEST_LENGTH){
@@ -42,24 +41,4 @@ string computeMD5FromString(const string &str){
     }
 
     return ss.str();
-}
-
-int main() {
-    string md5 = "5f4dcc3b5aa765d61d8327deb882cf99";
-    string sha256 = "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8";
-
-
-    ifstream ifs("wordlist.txt");
-    string content( (istreambuf_iterator<char>(ifs)),
-                        (istreambuf_iterator<char>()));
-
-
-    istringstream f(content);
-    string line;    
-    while (getline(f, line)) {
-        if (computeMD5FromString(line) == md5) {
-            cout << "Password/collision found for the following password:" << line << endl;
-        }
-    }
-    return 0;
 }
